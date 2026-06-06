@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abdoulaye Niang — Ingénieur Réseaux & Systèmes</title>
+  <style>
+    :root {
+      --navy: #0a1628;
+      --blue: #1a3a6b;
+      --accent: #2563eb;
+      --accent2: #3b82f6;
+      --gold: #f59e0b;
+      --light: #f0f4ff;
+      --white: #ffffff;
+      --gray: #64748b;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--light);
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10, 22, 40, 0.96);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 64px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .nav-logo {
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--white); letter-spacing: 0.5px;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    nav ul {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    nav ul a {
+      color: rgba(255,255,255,0.8); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--gold); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, #1e40af 100%);
+      display: flex; align-items: center;
+      padding: 80px 5% 60px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; top: -50%; right: -10%;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.25) 0%, transparent 70%);
+    }
+
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+      max-width: 1100px; margin: 0 auto; width: 100%;
+      position: relative; z-index: 1;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800; color: var(--white);
+      line-height: 1.15; margin-bottom: 0.4rem;
+    }
+    .hero-text h1 span { color: var(--gold); }
+
+    .hero-title {
+      font-size: 1rem; font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem; color: rgba(255,255,255,0.75);
+      max-width: 460px; margin-bottom: 2rem;
+    }
+
+    .hero-btns {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.8rem 1.8rem; border-radius: 8px;
+      font-size: 0.95rem; font-weight: 600;
+      text-decoration: none; display: inline-flex;
+      align-items: center; gap: 0.5rem;
+      transition: all 0.2s; cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: var(--gold); color: var(--navy);
+    }
+    .btn-primary:hover { background: #fbbf24; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(245,158,11,0.4); }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.4);
+      color: var(--white);
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+    /* Avatar photo */
+    .hero-avatar {
+      display: flex; justify-content: center; align-items: center;
+      position: relative;
+    }
+    .avatar-ring {
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      padding: 5px;
+      position: relative;
+      background: conic-gradient(var(--gold) 0deg, var(--accent2) 120deg, var(--gold) 240deg, var(--accent2) 360deg);
+      animation: spin 8s linear infinite;
+      box-shadow: 0 0 40px rgba(245,158,11,0.35), 0 0 80px rgba(37,99,235,0.2);
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .avatar-inner {
+      width: 100%; height: 100%; border-radius: 50%;
+      overflow: hidden;
+      background: var(--navy);
+      position: relative;
+    }
+
+    .avatar-inner img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 50%;
+      display: block;
+      animation: none;
+    }
+
+    .avatar-badge {
+      position: absolute; bottom: 10px; right: -10px;
+      background: var(--gold); color: var(--navy);
+      font-size: 0.72rem; font-weight: 800;
+      padding: 0.4rem 0.9rem; border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(245,158,11,0.5);
+      white-space: nowrap; z-index: 2; letter-spacing: 0.5px;
+    }
+
+    /* ─── CONTACT STRIP ─── */
+    .contact-strip {
+      background: var(--navy);
+      padding: 1.5rem 5%;
+      display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+    }
+    .contact-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      color: rgba(255,255,255,0.75); font-size: 0.9rem;
+    }
+    .contact-item .icon { font-size: 1.1rem; color: var(--gold); }
+    .contact-item a { color: inherit; text-decoration: none; }
+    .contact-item a:hover { color: var(--gold); }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 80px 5%; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800; color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .section-line {
+      width: 60px; height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      border-radius: 2px; margin-bottom: 3rem;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+    }
+    .about-text p {
+      color: var(--gray); font-size: 1.05rem; margin-bottom: 1.2rem;
+    }
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .stat-card {
+      background: var(--light); border-radius: 12px;
+      padding: 1.5rem; text-align: center;
+      border: 1px solid var(--border);
+    }
+    .stat-num {
+      font-size: 2rem; font-weight: 800; color: var(--accent);
+    }
+    .stat-label { font-size: 0.85rem; color: var(--gray); margin-top: 0.3rem; }
+
+    .langs {
+      display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem;
+    }
+    .lang-badge {
+      padding: 0.4rem 1rem; border-radius: 20px;
+      background: var(--light); border: 1px solid var(--border);
+      font-size: 0.85rem; font-weight: 600; color: var(--blue);
+    }
+
+    /* ─── SKILLS ─── */
+    #skills { background: var(--light); }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-category {
+      background: var(--white); border-radius: 16px;
+      padding: 1.8rem; border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .skill-category:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(37,99,235,0.12); }
+
+    .skill-cat-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1rem;
+    }
+    .ic-net { background: #dbeafe; }
+    .ic-sys { background: #d1fae5; }
+    .ic-db  { background: #fef3c7; }
+    .ic-math { background: #ede9fe; }
+
+    .skill-cat-title {
+      font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.8rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-tag {
+      padding: 0.3rem 0.7rem; border-radius: 6px;
+      background: var(--light); border: 1px solid var(--border);
+      font-size: 0.8rem; color: #334155;
+    }
+
+    /* ─── EXPERIENCE / EDUCATION TIMELINE ─── */
+    #experience { background: var(--white); }
+    #education  { background: var(--light); }
+
+    .timeline { position: relative; padding-left: 2.5rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 0.65rem; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent), var(--gold));
+      border-radius: 1px;
+    }
+
+    .timeline-item { position: relative; margin-bottom: 2.5rem; }
+    .timeline-dot {
+      position: absolute; left: -2.5rem;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 3px var(--accent2);
+      top: 0.4rem;
+    }
+
+    .timeline-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.6rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    #education .timeline-card { background: var(--white); }
+
+    .tl-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 1rem; flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+    .tl-role { font-size: 1.1rem; font-weight: 700; color: var(--navy); }
+    .tl-org  { font-size: 0.9rem; color: var(--accent); font-weight: 600; margin-bottom: 0.8rem; }
+    .tl-date {
+      font-size: 0.8rem; color: var(--white);
+      background: var(--accent); padding: 0.25rem 0.75rem;
+      border-radius: 20px; font-weight: 600; white-space: nowrap;
+    }
+    .tl-list {
+      list-style: none; padding: 0;
+    }
+    .tl-list li {
+      font-size: 0.9rem; color: var(--gray);
+      padding: 0.3rem 0 0.3rem 1.2rem;
+      position: relative; border-bottom: 1px solid #f1f5f9;
+    }
+    .tl-list li:last-child { border-bottom: none; }
+    .tl-list li::before {
+      content: '▸'; color: var(--gold);
+      position: absolute; left: 0;
+    }
+
+    /* ─── INTERESTS ─── */
+    #interests { background: var(--white); }
+    .interests-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+    .interest-card {
+      background: var(--light); border-radius: 14px;
+      padding: 2rem 1rem; text-align: center;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .interest-card:hover {
+      background: linear-gradient(135deg, var(--blue), var(--accent));
+      color: var(--white); transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(37,99,235,0.25);
+      border-color: transparent;
+    }
+    .interest-card:hover .int-label { color: var(--white); }
+    .int-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+    .int-label { font-size: 0.9rem; font-weight: 600; color: var(--navy); }
+
+    /* ─── CONTACT SECTION ─── */
+    #contact {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: var(--white); text-align: center;
+    }
+    #contact .section-title { color: var(--white); }
+    #contact .section-label { color: var(--gold); }
+    #contact .section-line { background: linear-gradient(90deg, var(--gold), rgba(255,255,255,0.3)); margin: 0 auto 3rem; }
+
+    .contact-cards {
+      display: flex; justify-content: center; gap: 1.5rem;
+      flex-wrap: wrap; margin-bottom: 2.5rem;
+    }
+    .contact-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 14px; padding: 1.5rem 2rem;
+      min-width: 180px;
+      transition: all 0.2s;
+    }
+    .contact-card:hover {
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-3px);
+    }
+    .cc-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .cc-label { font-size: 0.75rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
+    .cc-val   { font-size: 0.95rem; font-weight: 600; margin-top: 0.2rem; }
+    .cc-val a { color: var(--white); text-decoration: none; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy);
+      text-align: center; padding: 1.5rem;
+      color: rgba(255,255,255,0.4); font-size: 0.8rem;
+    }
+    footer span { color: var(--gold); }
+
+    /* ─── SCROLL TO TOP ─── */
+    #scrollTop {
+      position: fixed; bottom: 2rem; right: 2rem;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--accent); color: var(--white);
+      border: none; font-size: 1.2rem; cursor: pointer;
+      box-shadow: 0 4px 15px rgba(37,99,235,0.4);
+      display: none; align-items: center; justify-content: center;
+      transition: all 0.2s; z-index: 99;
+    }
+    #scrollTop:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); }
+    #scrollTop.show { display: flex; }
+
+    /* ─── DARK MODE ─── */
+    body.dark {
+      --light: #0f172a; --white: #1e293b; --card-bg: #1e293b;
+      --border: #334155; --gray: #94a3b8; --navy: #020617; --blue: #0f172a;
+    }
+    body.dark .section-title { color: #e2e8f0; }
+    body.dark .tl-role       { color: #e2e8f0; }
+    body.dark .tl-list li    { color: #94a3b8; border-bottom-color: #334155; }
+    body.dark .about-text p  { color: #94a3b8; }
+    body.dark .skill-tag     { background: #334155; border-color: #475569; color: #cbd5e1; }
+    body.dark .lang-badge    { background: #334155; border-color: #475569; color: #93c5fd; }
+    body.dark .int-label     { color: #e2e8f0; }
+    body.dark .interest-card { background: #1e293b; border-color: #334155; }
+    body.dark .timeline-card { background: #1e293b; }
+    body.dark #about         { background: #1e293b; }
+    body.dark #experience    { background: #1e293b; }
+    body.dark #interests     { background: #1e293b; }
+    body.dark .stat-card     { background: #334155; border-color: #475569; }
+    body.dark .stat-label    { color: #94a3b8; }
+    body.dark .skill-bar-label { color: #e2e8f0; }
+    body.dark .skill-bar-track { background: #334155; }
+
+    /* ─── DARK TOGGLE ─── */
+    .dark-toggle {
+      background: none; border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px; padding: 0.3rem 0.75rem;
+      color: var(--white); cursor: pointer; font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .dark-toggle:hover { background: rgba(255,255,255,0.1); border-color: var(--gold); }
+
+    /* ─── HAMBURGER ─── */
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); border-radius: 2px; transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ─── NAV ACTIVE ─── */
+    nav ul a.nav-active { color: var(--gold); font-weight: 700; }
+
+    /* ─── TYPING CURSOR ─── */
+    .typing-cursor {
+      display: inline-block; width: 2px; height: 1em;
+      background: var(--gold); margin-left: 2px; vertical-align: middle;
+      animation: blink 0.75s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ─── CANVAS ─── */
+    #hero-canvas {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ─── SKILL BARS ─── */
+    .skill-bars-section { margin-top: 3rem; }
+    .skill-bars-section h3 {
+      font-size: 1rem; font-weight: 700; color: var(--navy);
+      margin-bottom: 1.5rem; letter-spacing: 0.5px;
+    }
+    body.dark .skill-bars-section h3 { color: #e2e8f0; }
+    .skill-bars-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0.8rem 3rem;
+    }
+    .skill-bar-item { margin-bottom: 0.6rem; }
+    .skill-bar-label {
+      display: flex; justify-content: space-between;
+      font-size: 0.88rem; font-weight: 600; color: var(--navy); margin-bottom: 0.35rem;
+    }
+    .skill-pct { color: var(--accent); }
+    .skill-bar-track {
+      height: 8px; background: var(--border); border-radius: 4px; overflow: hidden;
+    }
+    .skill-bar {
+      height: 100%; width: 0%; border-radius: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      transition: width 1.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ─── COPY EMAIL ─── */
+    .copy-email-btn {
+      margin-top: 0.6rem; display: block; width: 100%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.75); font-size: 0.78rem;
+      padding: 0.3rem 0.6rem; border-radius: 6px; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .copy-email-btn:hover { background: rgba(255,255,255,0.18); color: var(--white); }
+    .copy-email-btn.copied { background: #10b981; border-color: #10b981; color: var(--white); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      nav ul {
+        display: none; flex-direction: column;
+        position: absolute; top: 64px; left: 0; right: 0;
+        background: rgba(10,22,40,0.98);
+        padding: 1rem 5%; gap: 0; border-top: 1px solid rgba(255,255,255,0.1);
+      }
+      nav ul.nav-open { display: flex; }
+      nav ul a { padding: 0.7rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); display: block; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-btns  { justify-content: center; }
+      .hero-avatar { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-strip { gap: 1.2rem; }
+      .tl-header { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AN<span>.</span></div>
+  <ul id="navMenu">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#experience">Expérience</a></li>
+    <li><a href="#education">Formation</a></li>
+    <li><a href="#interests">Centres d'intérêt</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:0.6rem;">
+    <button class="dark-toggle" id="darkToggle" title="Mode sombre">🌙</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-title">Je suis <span id="typing-text"></span><span class="typing-cursor"></span></p>
+      <h1>Abdoulaye<br/><span>Niang</span></h1>
+      <p class="hero-desc">
+        Ingénieur en Réseaux, Systèmes et Télécommunications — passionné par les infrastructures réseau, l'administration système Linux et la sécurité informatique.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-primary">📬 Me contacter</a>
+        <a href="#experience" class="btn btn-outline">🔍 Voir mon parcours</a>
+      </div>
+    </div>
+    <div class="hero-avatar">
+      <div class="avatar-ring">
+        <div class="avatar-inner">
+          <img src="photo-abdoulaye.jpg.jpeg" alt="Abdoulaye Niang" />
+        </div>
+      </div>
+      <div class="avatar-badge">🎓 Licence 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT STRIP -->
+<div class="contact-strip">
+  <div class="contact-item">
+    <span class="icon">📍</span>
+    <span>Hann Maristes, Dakar</span>
+  </div>
+  <div class="contact-item">
+    <span class="icon">📞</span>
+    <a href="tel:+221783139904">+221 783 139 904</a>
+  </div>
+  <div class="contact-item">
+    <span class="icon">✉️</span>
+    <a href="mailto:Nianglaye221@gmail.com">Nianglaye221@gmail.com</a>
+  </div>
+  <div class="contact-item">
+    <span class="icon">🌐</span>
+    <span>Français · Anglais</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <span class="section-label">Qui suis-je ?</span>
+    <h2 class="section-title">À Propos</h2>
+    <div class="section-line"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+           Licence en <strong>Systèmes Réseaux et Télécommunications</strong> à l'Université Dakar-Bourguiba, je suis un ingénieur passionné par les infrastructures numériques et la sécurité des systèmes.
+        </p>
+        <p>
+          visite chez <strong>Orange Dakar (2024)</strong> m'a permis de mettre en pratique mes connaissances dans un environnement professionnel réel : administration réseau, virtualisation, développement web et supervision.
+        </p>
+        <p>
+          Je maîtrise des environnements aussi bien <strong>Cisco / Huawei</strong> pour les réseaux que <strong>Linux</strong> pour l'administration système, et je suis à l'aise sur des projets de développement web (Angular, Laravel, PHP).
+        </p>
+        <div class="langs">
+          <span class="lang-badge">🇫🇷 Français</span>
+          <span class="lang-badge">🇬🇧 Anglais</span>
+        </div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Années d'études spécialisées</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">1</div>
+          <div class="stat-label">Stage professionnel (Orange)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Technologies maîtrisées</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2025</div>
+          <div class="stat-label">Diplôme prévu</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <span class="section-label">Savoir-faire</span>
+    <h2 class="section-title">Compétences</h2>
+    <div class="section-line"></div>
+    <div class="skills-grid">
+
+      <div class="skill-category">
+        <div class="skill-cat-icon ic-net">🌐</div>
+        <div class="skill-cat-title">Réseaux & Télécoms</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Cisco</span>
+          <span class="skill-tag">Huawei</span>
+          <span class="skill-tag">LAN / WAN</span>
+          <span class="skill-tag">Fibre optique</span>
+          <span class="skill-tag">Réseaux mobiles</span>
+          <span class="skill-tag">IP Téléphonie</span>
+          <span class="skill-tag">Nagios</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-icon ic-sys">🖥️</div>
+        <div class="skill-cat-title">Systèmes & Admin</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Linux (serveurs)</span>
+          <span class="skill-tag">Windows Server</span>
+          <span class="skill-tag">VMware</span>
+          <span class="skill-tag">Virtualisation</span>
+          <span class="skill-tag">MS Exchange</span>
+          <span class="skill-tag">Sécurité réseau</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-icon ic-db">🗄️</div>
+        <div class="skill-cat-title">Développement & Data</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Angular</span>
+          <span class="skill-tag">Laravel</span>
+          <span class="skill-tag">PHP</span>
+          <span class="skill-tag">UML / Merise</span>
+          <span class="skill-tag">Bases de données</span>
+          <span class="skill-tag">Business Intelligence</span>
+          <span class="skill-tag">Bitbucket</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-icon ic-math">📊</div>
+        <div class="skill-cat-title">Analyse & Méthodes</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Algèbre</span>
+          <span class="skill-tag">Statistiques</span>
+          <span class="skill-tag">Inférence stat.</span>
+          <span class="skill-tag">Analyse de données</span>
+          <span class="skill-tag">Cryptologie</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="skill-bars-section">
+      <h3>Niveau de maîtrise</h3>
+      <div class="skill-bars-grid">
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Configuration réseau (Cisco/Huawei)</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar" data-pct="85"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Administration Linux</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar" data-pct="80"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Virtualisation (VMware)</span><span class="skill-pct">75%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar" data-pct="75"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Sécurité réseau</span><span class="skill-pct">78%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar" data-pct="78"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Développement web (Angular/Laravel)</span><span class="skill-pct">70%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar" data-pct="70"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Bases de données & UML/Merise</span><span class="skill-pct">82%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar" data-pct="82"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <span class="section-label">Parcours</span>
+    <h2 class="section-title">Expérience Professionnelle</h2>
+    <div class="section-line"></div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Stagiaire en Administration Réseau</div>
+              <div class="tl-org">Orange — Dakar, Sénégal</div>
+            </div>
+            <span class="tl-date">2024</span>
+          </div>
+          <ul class="tl-list">
+            <li>Installation et maintenance de réseaux locaux</li>
+            <li>Assistance technique et gestion des problèmes réseau</li>
+            <li>Configuration de la sécurité réseau et virtualisation avec VMware</li>
+            <li>Développement d'une application web en <strong>Angular</strong> pour la gestion de données</li>
+            <li>Mise en place de machines virtuelles (Windows Server & Linux)</li>
+            <li>Analyse de vulnérabilités et renforcement de la sécurité réseau</li>
+            <li>Configuration d'un réseau IP téléphonique et de fibres optiques</li>
+            <li>Supervision réseau avec <strong>Nagios</strong></li>
+            <li>Développement d'un site web en <strong>Laravel</strong></li>
+            <li>Gestion de versions avec <strong>Bitbucket</strong></li>
+            <li>Configuration de <strong>Microsoft Exchange</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background: var(--gold);"></div>
+        <div class="timeline-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Projets Académiques</div>
+              <div class="tl-org">Université Dakar-Bourguiba</div>
+            </div>
+            <span class="tl-date">2022 – 2025</span>
+          </div>
+          <ul class="tl-list">
+            <li>Développement d'applications web en PHP</li>
+            <li>Conception de bases de données avec Merise et UML</li>
+            <li>Mise en place et configuration de réseaux informatiques</li>
+            <li>Études en sécurité réseau et cryptologie</li>
+            <li>Administration de systèmes Linux et bases de données</li>
+            <li>Rédaction d'un mémoire académique</li>
+            <li>Travaux pratiques en administration système et réseau</li>
+            <li>Participation à des projets de groupe en informatique</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <span class="section-label">Diplômes</span>
+    <h2 class="section-title">Formation</h2>
+    <div class="section-line"></div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Licence — Systèmes Réseaux et Télécommunications</div>
+              <div class="tl-org">Université Dakar-Bourguiba</div>
+            </div>
+            <span class="tl-date">2022 – 2025</span>
+          </div>
+          <ul class="tl-list">
+            <li>Réseaux informatiques avancés, LAN/WAN, fibre optique</li>
+            <li>Administration Linux, virtualisation et sécurité</li>
+            <li>Bases de données, modélisation UML/Merise</li>
+            <li>Développement web, mathématiques, statistiques</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background: var(--gold);"></div>
+        <div class="timeline-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Baccalauréat — Lettres et Sciences Humaines</div>
+              <div class="tl-org">Lycée Mixte Maurice Delafosse</div>
+            </div>
+            <span class="tl-date">2018 – 2021</span>
+          </div>
+          <ul class="tl-list">
+            <li>Diplôme de bachelier de l'enseignement secondaire</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INTERESTS -->
+<section id="interests">
+  <div class="container">
+    <span class="section-label">Loisirs</span>
+    <h2 class="section-title">Centres d'Intérêt</h2>
+    <div class="section-line"></div>
+    <div class="interests-grid">
+      <div class="interest-card">
+        <div class="int-icon">📚</div>
+        <div class="int-label">Lecture</div>
+      </div>
+      <div class="interest-card">
+        <div class="int-icon">⚽</div>
+        <div class="int-label">Sports</div>
+      </div>
+      <div class="interest-card">
+        <div class="int-icon">🎵</div>
+        <div class="int-label">Musique</div>
+      </div>
+      <div class="interest-card">
+        <div class="int-icon">🎮</div>
+        <div class="int-label">Jeux Vidéos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <span class="section-label">Disponible</span>
+    <h2 class="section-title">Me Contacter</h2>
+    <div class="section-line"></div>
+    <p style="color:rgba(255,255,255,0.7); margin-bottom:2.5rem; font-size:1.05rem;">
+      Ouvert aux opportunités de stage, emploi et collaborations dans le domaine des réseaux &amp; systèmes.
+    </p>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="cc-icon">📞</div>
+        <div class="cc-label">Téléphone</div>
+        <div class="cc-val"><a href="tel:+221783139904">+221 783 139 904</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="cc-icon">✉️</div>
+        <div class="cc-label">Email</div>
+        <div class="cc-val"><a href="mailto:Nianglaye221@gmail.com">Nianglaye221@gmail.com</a></div>
+        <button class="copy-email-btn" id="copyEmailBtn">📋 Copier l'email</button>
+      </div>
+      <div class="contact-card">
+        <div class="cc-icon">📍</div>
+        <div class="cc-label">Localisation</div>
+        <div class="cc-val">Hann Maristes, Dakar</div>
+      </div>
+    </div>
+    <a href="mailto:Nianglaye221@gmail.com" class="btn btn-primary" style="margin-top:1rem;">
+      ✉️ Envoyer un email
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Abdoulaye Niang</span> — Ingénieur Réseaux, Systèmes & Télécommunications</p>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button id="scrollTop" title="Remonter en haut">↑</button>
+
+<script>
+  // ─── SCROLL TO TOP ───
+  const scrollBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => scrollBtn.classList.toggle('show', window.scrollY > 400));
+  scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // ─── FADE-IN ON SCROLL (staggeré) ───
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      setTimeout(() => {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }, parseInt(e.target.dataset.delay || 0));
+      fadeObserver.unobserve(e.target);
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.skill-category, .timeline-card, .interest-card, .stat-card, .skill-bar-item').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(22px)';
+    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+    el.dataset.delay = (i % 4) * 100;
+    fadeObserver.observe(el);
+  });
+
+  // ─── COMPTEURS ANIMÉS ───
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const raw = el.textContent.trim();
+      const num = parseInt(raw.replace(/\D/g, ''), 10);
+      const suffix = raw.replace(/[0-9]/g, '');
+      if (isNaN(num)) return;
+      let current = 0;
+      const inc = Math.ceil(num / 60);
+      const tick = () => {
+        current = Math.min(current + inc, num);
+        el.textContent = current + suffix;
+        if (current < num) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      counterObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-num').forEach(c => counterObserver.observe(c));
+
+  // ─── BARRES DE COMPÉTENCES ───
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('.skill-bar').forEach((bar, i) => {
+        setTimeout(() => { bar.style.width = bar.dataset.pct + '%'; }, 150 + i * 120);
+      });
+      barObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.25 });
+  document.querySelectorAll('.skill-bars-section').forEach(s => barObserver.observe(s));
+
+  // ─── LIEN NAV ACTIF ───
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('#navMenu a');
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      navLinks.forEach(a => a.classList.remove('nav-active'));
+      const link = document.querySelector(`#navMenu a[href="#${entry.target.id}"]`);
+      if (link) link.classList.add('nav-active');
+    });
+  }, { rootMargin: '-35% 0px -60% 0px' });
+  sections.forEach(s => spyObserver.observe(s));
+
+  // ─── MENU HAMBURGER ───
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('navMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navMenu.classList.toggle('nav-open');
+  });
+  navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    navMenu.classList.remove('nav-open');
+  }));
+
+  // ─── MODE SOMBRE ───
+  const darkToggle = document.getElementById('darkToggle');
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark');
+    darkToggle.textContent = '☀️';
+  }
+  darkToggle.addEventListener('click', () => {
+    const isDark = document.body.classList.toggle('dark');
+    darkToggle.textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+
+  // ─── ANIMATION DE FRAPPE ───
+  const phrases = [
+    'Ingénieur Réseaux',
+    'Admin Systèmes Linux',
+    'Développeur Web',
+    'Expert Sécurité Réseau',
+    'Passionné de Tech',
+  ];
+  const typingEl = document.getElementById('typing-text');
+  let phraseIdx = 0, charIdx = 0, deleting = false;
+  function type() {
+    const phrase = phrases[phraseIdx];
+    typingEl.textContent = deleting ? phrase.slice(0, --charIdx) : phrase.slice(0, ++charIdx);
+    if (!deleting && charIdx === phrase.length) { deleting = true; return setTimeout(type, 2000); }
+    if (deleting && charIdx === 0) { deleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; }
+    setTimeout(type, deleting ? 55 : 88);
+  }
+  setTimeout(type, 700);
+
+  // ─── CANVAS PARTICULES ───
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  const particles = [];
+
+  function resizeCanvas() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  class Particle {
+    constructor() { this.reset(true); }
+    reset(init = false) {
+      this.x     = Math.random() * canvas.width;
+      this.y     = init ? Math.random() * canvas.height : (Math.random() < 0.5 ? 0 : canvas.height);
+      this.r     = Math.random() * 1.8 + 0.4;
+      this.vx    = (Math.random() - 0.5) * 0.38;
+      this.vy    = (Math.random() - 0.5) * 0.38;
+      this.alpha = Math.random() * 0.45 + 0.1;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < -5 || this.x > canvas.width + 5 || this.y < -5 || this.y > canvas.height + 5) this.reset();
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(245,158,11,${this.alpha})`;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < 70; i++) particles.push(new Particle());
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 110) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(255,255,255,${0.07 * (1 - dist / 110)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+      particles[i].update();
+    }
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+
+  // ─── COPIER EMAIL ───
+  const copyBtn = document.getElementById('copyEmailBtn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('Nianglaye221@gmail.com').then(() => {
+        copyBtn.textContent = '✓ Copié !';
+        copyBtn.classList.add('copied');
+        setTimeout(() => {
+          copyBtn.textContent = "📋 Copier l'email";
+          copyBtn.classList.remove('copied');
+        }, 2200);
+      }).catch(() => {
+        copyBtn.textContent = '✗ Erreur';
+        setTimeout(() => { copyBtn.textContent = "📋 Copier l'email"; }, 2000);
+      });
+    });
+  }
+</script>
+</body>
+</html>
