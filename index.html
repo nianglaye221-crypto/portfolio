@@ -13,21 +13,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <style>
       :root {
-        --bg: #090909;
-        --bg-2: #111111;
-        --panel: rgba(255, 255, 255, 0.04);
-        --panel-strong: rgba(255, 255, 255, 0.08);
+        --bg: #061114;
+        --bg-2: #0d1d25;
+        --panel: rgba(9, 18, 24, 0.75);
+        --panel-strong: rgba(15, 30, 38, 0.9);
+        --line: rgba(255,255,255,0.08);
+        --white: #edf5f8;
+        --muted: #a8bac3;
+        --silver: #cdd8de;
         --gold-1: #f4d27a;
         --gold-2: #d9a928;
         --gold-3: #a86e16;
-        --gold-soft: rgba(244, 210, 122, 0.18);
-        --white: #f6f3ee;
-        --muted: #b9b2a6;
-        --line: rgba(255,255,255,0.09);
-        --blue: #2c7df7;
-        --dark-blue: #091c30;
-        --shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
-        --radius: 24px;
+        --blue-1: #69d2ff;
+        --blue-2: #2c7df7;
+        --slate: #10242d;
+        --dark: #040d12;
+        --shadow: 0 28px 80px rgba(2, 11, 17, 0.52);
+        --radius: 26px;
       }
 
       * { box-sizing: border-box; }
@@ -37,9 +39,9 @@
         font-family: "Manrope", sans-serif;
         color: var(--white);
         background:
-          radial-gradient(circle at top left, rgba(244,210,122,0.06), transparent 18%),
-          radial-gradient(circle at bottom right, rgba(44,125,247,0.06), transparent 22%),
-          linear-gradient(180deg, #050505 0%, #111111 100%);
+          radial-gradient(circle at top left, rgba(105, 210, 255, 0.12), transparent 18%),
+          radial-gradient(circle at bottom right, rgba(244, 210, 122, 0.08), transparent 18%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
         line-height: 1.7;
       }
       a { color: inherit; text-decoration: none; }
@@ -60,8 +62,8 @@
         margin-bottom: 0.8rem;
         color: var(--gold-1);
         text-transform: uppercase;
-        letter-spacing: 0.15em;
-        font-size: 0.74rem;
+        letter-spacing: 0.16em;
+        font-size: 0.72rem;
         font-weight: 800;
       }
       h1, h2, h3, h4 {
@@ -69,25 +71,17 @@
         margin: 0;
         letter-spacing: -0.04em;
       }
-      h1 {
-        font-size: clamp(2.7rem, 6vw, 5.7rem);
-        line-height: 0.95;
-      }
-      h2 {
-        font-size: clamp(2rem, 4vw, 3.3rem);
-        line-height: 1.08;
-      }
-      h3 {
-        font-size: 1.4rem;
-      }
+      h1 { font-size: clamp(2.7rem, 6vw, 5.7rem); line-height: 0.95; }
+      h2 { font-size: clamp(2rem, 4vw, 3.3rem); line-height: 1.08; }
+      h3 { font-size: 1.4rem; }
 
       .topbar {
         position: sticky;
         top: 0;
         z-index: 99;
-        background: rgba(9, 9, 9, 0.88);
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        backdrop-filter: blur(12px);
+        background: rgba(5, 12, 16, 0.76);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        backdrop-filter: blur(18px);
       }
       .nav {
         min-height: 78px;
@@ -103,7 +97,7 @@
         font-family: "Cinzel", serif;
         font-size: 0.85rem;
         font-weight: 700;
-        letter-spacing: 0.06em;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
       }
       .brand-mark {
@@ -114,7 +108,7 @@
         place-items: center;
         background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
         color: #0a0a0a;
-        box-shadow: 0 12px 25px rgba(217,169,40,0.35);
+        box-shadow: 0 12px 25px rgba(244, 210, 122, 0.3);
       }
       .nav-links {
         display: flex;
@@ -129,6 +123,7 @@
         text-transform: uppercase;
       }
       .nav-links a:hover, .nav-links a.active { color: var(--gold-1); }
+
       .btn {
         display: inline-flex;
         align-items: center;
@@ -138,28 +133,28 @@
         padding: 0.8rem 1.4rem;
         border-radius: 14px;
         font-weight: 800;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
       }
       .btn:hover { transform: translateY(-2px); }
       .btn-primary {
         border: 1px solid rgba(244, 210, 122, 0.35);
         background: linear-gradient(135deg, #f0cb62, #d99e1c);
         color: #0a0a0a;
-        box-shadow: 0 16px 35px rgba(217,169,40,0.25);
+        box-shadow: 0 18px 35px rgba(217,169,40,0.25);
       }
       .btn-secondary {
-        border: 1px solid var(--line);
+        border: 1px solid rgba(255,255,255,0.12);
         color: var(--white);
         background: rgba(255,255,255,0.02);
       }
 
       .hero {
-        padding: 80px 0 40px;
+        padding: 92px 0 52px;
       }
       .hero-grid {
         display: grid;
         grid-template-columns: 1.05fr 0.95fr;
-        gap: 2.2rem;
+        gap: 2.4rem;
         align-items: center;
       }
       .hero-copy {
@@ -174,7 +169,7 @@
       }
       .highlight {
         display: inline-block;
-        background: linear-gradient(135deg, var(--gold-1), var(--gold-2));
+        background: linear-gradient(135deg, var(--gold-1), var(--blue-1), var(--gold-2));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -195,7 +190,7 @@
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        padding: 0.7rem 0.95rem;
+        padding: 0.78rem 1rem;
         border-radius: 999px;
         background: rgba(255,255,255,0.03);
         border: 1px solid var(--line);
@@ -216,8 +211,8 @@
         aspect-ratio: 1 / 1.08;
         padding: 18px;
         border-radius: 30px;
-        background: linear-gradient(135deg, rgba(244,210,122,0.25), rgba(255,255,255,0.04));
-        border: 1px solid rgba(244,210,122,0.2);
+        background: linear-gradient(135deg, rgba(105,210,255,0.15), rgba(244,210,122,0.12));
+        border: 1px solid rgba(105,210,255,0.22);
         box-shadow: var(--shadow);
       }
       .portrait-inner {
@@ -226,7 +221,7 @@
         overflow: hidden;
         border-radius: 26px;
         border: 2px solid rgba(255,255,255,0.06);
-        background: linear-gradient(135deg, rgba(9, 28, 48, 0.7), rgba(17,17,17,0.9));
+        background: linear-gradient(135deg, rgba(8, 25, 34, 0.8), rgba(17,17,17,0.9));
       }
       .portrait-inner img {
         width: 100%;
@@ -236,12 +231,12 @@
       }
       .status {
         position: absolute;
-        right: 20px;
+        right: 22px;
         bottom: 18px;
         padding: 0.8rem 1rem;
         border-radius: 999px;
-        background: rgba(8,8,8,0.8);
-        border: 1px solid rgba(244,210,122,0.2);
+        background: rgba(8, 15, 19, 0.82);
+        border: 1px solid rgba(244,210,122,0.24);
         color: var(--gold-1);
         font-weight: 800;
         font-size: 0.75rem;
@@ -250,7 +245,7 @@
       }
 
       .card {
-        background: rgba(255,255,255,0.02);
+        background: linear-gradient(180deg, rgba(17,30,38,0.92), rgba(10,18,24,0.9));
         border: 1px solid rgba(255,255,255,0.08);
         border-radius: var(--radius);
         box-shadow: var(--shadow);
@@ -276,9 +271,9 @@
         align-items: center;
         padding: 0.58rem 0.9rem;
         border-radius: 999px;
-        background: rgba(244,210,122,0.07);
-        border: 1px solid rgba(244,210,122,0.2);
-        color: var(--gold-1);
+        background: rgba(105,210,255,0.08);
+        border: 1px solid rgba(105,210,255,0.2);
+        color: var(--blue-1);
         font-size: 0.72rem;
         font-weight: 800;
         letter-spacing: 0.04em;
@@ -320,7 +315,7 @@
       }
       .skill-card:hover {
         transform: translateY(-3px);
-        border-color: rgba(244,210,122,0.35);
+        border-color: rgba(105,210,255,0.35);
       }
       .skill-icon {
         width: 60px;
@@ -328,8 +323,8 @@
         border-radius: 18px;
         display: grid;
         place-items: center;
-        background: linear-gradient(135deg, rgba(244,210,122,0.1), rgba(255,255,255,0.03));
-        border: 1px solid rgba(244,210,122,0.18);
+        background: linear-gradient(135deg, rgba(105,210,255,0.12), rgba(244,210,122,0.09));
+        border: 1px solid rgba(105,210,255,0.2);
         font-size: 1.4rem;
         margin-bottom: 1rem;
       }
@@ -368,12 +363,12 @@
         content: "";
         position: absolute;
         left: 0;
-        top: 0.85rem;
+        top: 0.9rem;
         width: 12px;
         height: 12px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--gold-1), var(--gold-2));
-        box-shadow: 0 0 0 5px rgba(244,210,122,0.08);
+        background: linear-gradient(135deg, var(--gold-1), var(--blue-1));
+        box-shadow: 0 0 0 5px rgba(105,210,255,0.08);
       }
       .timeline-content {
         padding: 1.5rem 1.4rem;
@@ -446,7 +441,7 @@
       }
       .project-card:hover {
         transform: translateY(-4px);
-        border-color: rgba(244,210,122,0.35);
+        border-color: rgba(105,210,255,0.4);
       }
       .project-visual {
         height: 180px;
@@ -469,7 +464,7 @@
         max-width: 78%;
         max-height: 78%;
         object-fit: contain;
-        filter: drop-shadow(0 12px 24px rgba(0,0,0,0.28));
+        filter: drop-shadow(0 12px 24px rgba(0,0,0,0.22));
       }
       .visual-2k {
         background: linear-gradient(135deg, rgba(18,63,130,0.7), rgba(16,17,24,0.75)),
@@ -479,10 +474,10 @@
         background: linear-gradient(135deg, rgba(27,42,55,0.92), rgba(8,17,24,0.9));
       }
       .visual-teranga {
-        background: linear-gradient(135deg, rgba(22,71,52,0.8), rgba(11,23,17,0.9));
+        background: linear-gradient(135deg, rgba(14,37,52,0.92), rgba(7,22,28,0.92));
       }
       .visual-osons {
-        background: linear-gradient(135deg, rgba(87,62,18,0.8), rgba(23,20,12,0.9));
+        background: linear-gradient(135deg, rgba(116,89,40,0.64), rgba(19,16,12,0.92));
       }
       .project-content {
         padding: 1.35rem 1.2rem 1.4rem;
@@ -527,8 +522,8 @@
         gap: 1rem;
         flex-wrap: wrap;
         padding: 2rem;
-        border: 1px solid rgba(244,210,122,0.25);
-        background: linear-gradient(135deg, rgba(244,210,122,0.08), rgba(255,255,255,0.02));
+        border: 1px solid rgba(105,210,255,0.18);
+        background: linear-gradient(135deg, rgba(105,210,255,0.08), rgba(244,210,122,0.06));
       }
       .cta-box h3 {
         font-size: clamp(1.7rem, 3vw, 2.5rem);
@@ -550,8 +545,8 @@
         border-radius: 18px;
         display: grid;
         place-items: center;
-        border: 1px solid rgba(244,210,122,0.2);
-        background: rgba(244,210,122,0.06);
+        border: 1px solid rgba(105,210,255,0.22);
+        background: rgba(105,210,255,0.06);
         color: var(--gold-1);
       }
       .contact-item small {
@@ -911,7 +906,7 @@
 
             <article class="card project-card">
               <div class="project-visual visual-osons">
-                <span style="position: relative; z-index: 1; font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 700; letter-spacing: 0.08em;">OD</span>
+                <span style="position: relative; z-index: 1; font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 700; letter-spacing: 0.08em; color: #f7ddb0; text-shadow: 0 6px 18px rgba(0,0,0,0.24);">OD</span>
               </div>
               <div class="project-content">
                 <div class="project-meta">Décoration</div>
