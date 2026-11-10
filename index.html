@@ -517,7 +517,7 @@
         filter: drop-shadow(0 18px 28px rgba(0,0,0,0.28));
       }
       .project-card.osons-card .project-visual {
-        background: linear-gradient(135deg, rgba(139, 104, 45, 0.78), rgba(24, 15, 9, 0.92));
+        background: linear-gradient(135deg, rgba(116,89,40,0.64), rgba(19,16,12,0.92));
         padding: 0.15rem;
       }
       .project-card.osons-card .project-visual img {
@@ -573,6 +573,28 @@
         font-size: 0.68rem;
         font-weight: 700;
         color: var(--white);
+      }
+      .project-link {
+        display: inline-flex;
+        margin-top: 1rem;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0.7rem 1rem;
+        border-radius: 12px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border: 1px solid rgba(105,210,255,0.22);
+        background: rgba(105,210,255,0.08);
+        color: var(--white);
+        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      .project-link:hover {
+        transform: translateY(-2px);
+        border-color: rgba(105,210,255,0.45);
+        box-shadow: 0 14px 28px rgba(8,17,26,0.35);
       }
 
       .cta-box {
@@ -929,6 +951,7 @@
                   <span>Web</span>
                   <span>Auto</span>
                 </div>
+                <a class="project-link" href="https://2kautomobiles.com" target="_blank" rel="noreferrer">Voir le site</a>
               </div>
             </article>
 
@@ -999,17 +1022,15 @@
               <small>Téléphone</small>
               <a href="tel:+221783139904">+221 78 313 99 04</a>
             </div>
-
             <div class="card contact-item">
               <div class="contact-icon">✉️</div>
               <small>Email</small>
               <a href="mailto:Nianglaye221@gmail.com">Nianglaye221@gmail.com</a>
             </div>
-
             <div class="card contact-item">
-              <div class="contact-icon">💻</div>
-              <small>GitHub</small>
-              <a href="https://github.com/nianglaye221-crypto" target="_blank" rel="noreferrer">github.com/nianglaye221-crypto</a>
+              <div class="contact-icon">📍</div>
+              <small>Localisation</small>
+              <span>Dakar, Sénégal</span>
             </div>
           </div>
         </div>
@@ -1017,7 +1038,7 @@
     </main>
 
     <footer>
-      © 2026 Abdoulaye Niang — Portfolio personnel.
+      © 2025 Abdoulaye Niang — Portfolio.
     </footer>
   </body>
 </html>
